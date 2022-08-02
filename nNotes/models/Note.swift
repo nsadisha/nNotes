@@ -7,18 +7,9 @@
 
 import Foundation
 
-struct Note: Hashable{
+struct Note: Hashable, Codable{
+    var id: Int
     var title: String
     var note: String
-    var date: String
-    
-    func getTitle() -> String {
-        return title
-    }
-    func getNote() -> String {
-        return note
-    }
-    func getDate() -> String {
-        return date
-    }
+    var lastUpdate: String
 }

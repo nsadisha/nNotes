@@ -8,13 +8,23 @@
 import SwiftUI
 
 struct NoteItem: View {
+    var note: Note
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationLink(destination: NoteViewScreen(note: note)) {
+            VStack(alignment: .leading){
+                Text(note.title)
+                    .font(.title3)
+                    .fontWeight(.medium)
+                    .padding(.bottom, 1)
+                Text(note.note)
+                    .foregroundColor(Color.gray)
+            }.frame(height: 60)
+        }
     }
 }
 
 struct NoteItem_Previews: PreviewProvider {
     static var previews: some View {
-        NoteItem()
+        HomeScreen()
     }
 }

@@ -8,27 +8,42 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    @State private var notes = [
-        Note(title: "Title 1", note: "Note 1", date: "Date 1"),
-        Note(title: "Title 2", note: "Note 2", date: "Date 2"),
-        Note(title: "Title 3", note: "Note 3", date: "Date 3"),
-        Note(title: "Title 4", note: "Note 4", date: "Date 4"),
-        Note(title: "Title 5", note: "Note 5", date: "Date 5")
-    ]
+    @State private var notes: [Note] = []
     @State private var searchTerm = ""
+    
+    private let db = Database.getInstance()
     
     var body: some View {
         NavigationView{
             VStack {
                 TextField("Search notes", text: $searchTerm)
-                List{
-                    ForEach(notes, id: \.self){note in
-                        Text(note.title)
-                    }
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 20)
+                    .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
+                if notes.count == 0{
+                    EmptyScreen()
+                }else{
+                    NoteList(notes: notes)
                 }
+                
             }
                 .navigationTitle("nNotes")
                 .background(Color.gray.opacity(0.1))
+                .toolbar{
+                    ToolbarItemGroup(placement: .navigationBarTrailing){
+                    NavigationLink(destination: NewNoteScreen()){
+                        Image(systemName: "plus")
+                    }
+                    NavigationLink(destination: SettingsScreen()){
+                        Image(systemName: "gear")
+                    }
+                        
+                    }
+
+                }
+                .onAppear{
+                    notes = db.readAll()
+                }
         }
     }
 }
