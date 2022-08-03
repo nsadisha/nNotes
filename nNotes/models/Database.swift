@@ -95,6 +95,26 @@ class Database {
         return mainList
     }
     
+    func query(q: String) -> [Note] {
+        var mainList = [Note]()
+        
+        let query = "SELECT * FROM notes WHERE title LIKE '%\(q)%' OR note LIKE '%\(q)%';"
+        var statement : OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, query, -1, &statement, nil) == SQLITE_OK{
+            while sqlite3_step(statement) == SQLITE_ROW {
+                let id = Int(sqlite3_column_int(statement, 0))
+                let title = String(describing: String(cString: sqlite3_column_text(statement, 1)))
+                let note = String(describing: String(cString: sqlite3_column_text(statement, 2)))
+                let lastUpdate = String(sqlite3_column_int(statement, 3))
+
+                let model = Note(id: id, title: title, note: note, lastUpdate: lastUpdate)
+                    
+                mainList.append(model)
+            }
+        }
+        return mainList
+    }
+    
     func update(_note: Note) {
         let id = _note.id
         let title = _note.title
