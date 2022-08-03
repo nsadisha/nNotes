@@ -9,17 +9,21 @@ import SwiftUI
 
 struct CustomTextField: View {
     var placeHolder: String
+    var prefixIcon: String?
     @Binding var text: String
     @State private var showClearButton = false
+    var clearBtn: Bool?
     var body: some View {
         HStack{
-            Image(systemName: "magnifyingglass").foregroundColor(Color.gray)
+            if(prefixIcon?.isEmpty == false){
+                Image(systemName: prefixIcon!).foregroundColor(Color.gray)
+            }
             TextField(placeHolder, text: $text)
                 .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
                 .onChange(of: text){query in
                     showClearButton = !query.isEmpty
                 }
-            if(showClearButton == true){
+            if(showClearButton && !(clearBtn != nil)){
                 Button {
                     text = ""
                 } label: {
