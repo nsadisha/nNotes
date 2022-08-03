@@ -8,29 +8,30 @@
 import SwiftUI
 
 struct CustomTextField: View {
-    @State var searchTerm: Binding<String>
-    @State var showClearButton = false
+    var placeHolder: String
+    @Binding var text: String
+    @State private var showClearButton = false
     var body: some View {
         HStack{
-            Image(systemName: "trash").foregroundColor(Color.gray)
-            TextField("Search notes", text: searchTerm)
+            Image(systemName: "magnifyingglass").foregroundColor(Color.gray)
+            TextField(placeHolder, text: $text)
                 .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-                .onChange(of: searchTerm.wrappedValue){query in
-                    showClearButton = query != ""
-                    
+                .onChange(of: text){query in
+                    showClearButton = !query.isEmpty
                 }
             if(showClearButton == true){
                 Button {
-                    searchTerm.wrappedValue = ""
+                    text = ""
                 } label: {
-                    Image(systemName: "house.fill")
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(Color.gray)
                 }
             }
         }
             .padding(.horizontal, 10)
             .padding(.vertical, 4)
             .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 0.5))
-            .background(Color.white)
+//            .background(Color.red)
             .padding(.horizontal, 20)
     }
 }
