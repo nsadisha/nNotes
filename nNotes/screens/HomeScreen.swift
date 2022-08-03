@@ -16,7 +16,7 @@ struct HomeScreen: View {
     var body: some View {
         NavigationView{
             VStack {
-                CustomTextField(searchTerm: $searchTerm)
+                CustomTextField(placeHolder: "Search notes", text: $searchTerm)
                     .onChange(of: searchTerm){query in
                         notes = db.query(q: query)
                     }
