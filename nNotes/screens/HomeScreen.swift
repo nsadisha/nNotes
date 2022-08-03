@@ -16,12 +16,15 @@ struct HomeScreen: View {
     var body: some View {
         NavigationView{
             VStack {
-                TextField("Search notes", text: $searchTerm)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal, 20)
-                    .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/)
-                if notes.count == 0{
-                    EmptyScreen()
+                CustomTextField(searchTerm: $searchTerm)
+                    .onChange(of: searchTerm){query in
+                        notes = db.query(q: query)
+                    }
+ 
+                if notes.count == 0 && searchTerm == ""{
+                    EmptyScreen(msg: "You don't have any notes.")
+                }else if notes.count == 0 && searchTerm != ""{
+                    EmptyScreen(msg: "Coudn't find any matching notes.")
                 }else{
                     NoteList(notes: notes)
                 }
@@ -42,7 +45,7 @@ struct HomeScreen: View {
 
                 }
                 .onAppear{
-                    notes = db.readAll()
+                    notes = db.query(q: searchTerm)
                 }
         }
     }

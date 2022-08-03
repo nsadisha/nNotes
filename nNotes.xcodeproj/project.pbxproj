@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB3519CE289A843500B458E2 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3519CD289A843500B458E2 /* CustomTextField.swift */; };
 		ABF3AB6A28994E5000F7A16A /* nNotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF3AB6928994E5000F7A16A /* nNotesApp.swift */; };
 		ABF3AB6E28994E5100F7A16A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABF3AB6D28994E5100F7A16A /* Assets.xcassets */; };
 		ABF3AB7128994E5100F7A16A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABF3AB7028994E5100F7A16A /* Preview Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB3519CD289A843500B458E2 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		ABF3AB6628994E5000F7A16A /* nNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF3AB6928994E5000F7A16A /* nNotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nNotesApp.swift; sourceTree = "<group>"; };
 		ABF3AB6D28994E5100F7A16A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				ABF3AB7F28994FA700F7A16A /* NoteItem.swift */,
+				AB3519CD289A843500B458E2 /* CustomTextField.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABF3AB7A28994EB500F7A16A /* SettingsScreen.swift in Sources */,
+				AB3519CE289A843500B458E2 /* CustomTextField.swift in Sources */,
 				ABF3AB6A28994E5000F7A16A /* nNotesApp.swift in Sources */,
 				ABF3AB8B28995B9E00F7A16A /* NoteList.swift in Sources */,
 				ABF3AB852899506900F7A16A /* Note.swift in Sources */,
