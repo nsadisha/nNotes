@@ -30,7 +30,7 @@ struct HomeScreen: View {
                 }else if notes.count == 0 && searchTerm != ""{
                     EmptyScreen(msg: "Coudn't find any matching notes.")
                 }else{
-                    NoteList(notes: notes)
+                    NoteList(notes: $notes)
                 }
                 
             }
