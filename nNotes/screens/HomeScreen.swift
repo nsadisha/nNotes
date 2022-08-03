@@ -39,7 +39,7 @@ struct HomeScreen: View {
                 .toolbar{
                     ToolbarItemGroup(placement: .navigationBarTrailing){
                     NavigationLink(destination: NewNoteScreen()){
-                        Image(systemName: "plus")
+                        Image(systemName: "plus.circle.fill")
                     }
                     NavigationLink(destination: SettingsScreen()){
                         Image(systemName: "gear")
