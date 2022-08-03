@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct EmptyScreen: View {
+    var msg: String
     var body: some View {
         VStack{
-            Text("You don't have any notes.").foregroundColor(Color.gray)
+            Text(msg).foregroundColor(Color.gray)
         }.frame(maxHeight: .infinity)
     }
 }
 
 struct EmptyScreen_Previews: PreviewProvider {
     static var previews: some View {
-        EmptyScreen()
+        EmptyScreen(msg: "test")
     }
 }
